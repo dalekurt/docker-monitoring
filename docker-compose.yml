@@ -10,7 +10,8 @@ influxsrv:
 cadvisor:
   image: google/cadvisor
   name: cadvisor
-  ports: "8080:8080"
+  ports:
+    - "8080:8080"
   volumes:
     - /:/rootfs:ro
     - /var/run:/var/run:rw
@@ -21,7 +22,8 @@ cadvisor:
 grafana:
   image: grafana/grafana
   name: grafana
-  ports: "3000:3000"
+  ports:
+    - "3000:3000"
   links:
     - influxsrv:influxsrv
   environment:
