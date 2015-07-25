@@ -1,5 +1,5 @@
 influxsrv:
-  image: tutum/influxdb
+  image: tutum/influxdb:0.8.8
   name: influxsrv
   ports:
     - "8083:8083"
