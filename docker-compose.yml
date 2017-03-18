@@ -1,6 +1,6 @@
 influxsrv:
   image: tutum/influxdb:0.13
-  name: influxsrv
+  container_name: influxsrv
   ports:
     - "8083:8083"
     - "8086:8086"
@@ -11,7 +11,7 @@ influxsrv:
     - PRE_CREATE_DB=cadvisor
 cadvisor:
   image: google/cadvisor
-  name: cadvisor
+  container_name: cadvisor
   command: -storage_driver=influxdb -storage_driver_db=cadvisor -storage_driver_host=influxsrv:8086
   ports:
     - "8080:8080"
@@ -24,7 +24,7 @@ cadvisor:
     - influxsrv:influxsrv
 grafana:
   image: grafana/grafana:latest
-  name: grafana
+  container_name: grafana
   ports:
     - "3000:3000"
   links:
