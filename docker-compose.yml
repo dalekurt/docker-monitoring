@@ -23,12 +23,16 @@ cadvisor:
   links:
     - influxsrv:influxsrv
 grafana:
-  image: grafana/grafana
+  image: grafana/grafana:latest
   name: grafana
   ports:
     - "3000:3000"
   links:
     - influxsrv:influxsrv
+  volumes:
+    - ./grafana_data/var:/var/lib/grafana
+    - ./grafana_data/log:/var/log/grafana
+    - /etc/localtime:/etc/localtime:ro
   environment:
     - INFLUXDB_HOST=localhost
     - INFLUXDB_PORT=8086
